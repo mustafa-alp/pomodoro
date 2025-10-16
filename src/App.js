@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Timer from './Timer';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+
+      main: '#7C4DFF'
+    },
+    secondary: {
+      main: '#6A1B9A'
+    }
+  },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        disableElevation: true
+      }
+    }
+  }
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box className="app-root">
+        <Box sx={{ textAlign: 'center' }}>
+          <Typography variant="h2" className="gradient-text" sx={{ fontWeight: 700, mb: 1 }}>Pomodoro Sayacı</Typography>
+          <Timer />
+        </Box>
+      </Box>
+    </ThemeProvider>
   );
 }
 
